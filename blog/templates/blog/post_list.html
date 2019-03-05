@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for a in post_list %}
+        <div class='when'>
+            {{ a.published_date }} 
+            <a href="{% url 'post_detail' pk=a.pk %}">
+                Comments: {{ a.comments.count }}
+            </a>
+            <br>
+        </div>
+        <a href="{% url 'post_detail' pk=a.pk %}">{{ a.title }}</a><br>
+        {{ a.text|linebreaksbr}}<br>
+        <br>
+    {% endfor %}
+{% endblock %}
+
